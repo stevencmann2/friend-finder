@@ -1,0 +1,28 @@
+{
+  "name": "friend-finder",
+  "version": "1.0.0",
+  "description": "A Heroku Web Application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevencmann2/friend-finder.git"
+  },
+  "keywords": [
+    "Express",
+    "Heroku",
+    "Node"
+  ],
+  "author": "Steven Mann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stevencmann2/friend-finder/issues"
+  },
+  "homepage": "https://github.com/stevencmann2/friend-finder#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
