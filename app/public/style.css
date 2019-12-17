@@ -1,0 +1,25 @@
+
+body {
+    background-image: url("friends-logo.png")
+}
+
+.jumbotron {
+    
+    background-color: black;
+}
+
+.hhh {
+    color: white;
+}
+
+.lead{
+    color: red
+}
+
+.fa-spinner {
+    color: white
+}
+
+#sec-text {
+    color: yellow
+}
