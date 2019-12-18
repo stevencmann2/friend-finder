@@ -9,17 +9,16 @@ module.exports = function (app) {
     return res.json(friendsData);
   });
 
+
+  // app.post("/api/friends", function (req, res) {
+
+// });
+
 }
 
 
-
-// const express = require('express');
-// const path = require('path');
 
 
 // GET ROUTES FOR APP 
 
 
-// app.post("/api/friends", function (req, res) {
-
-// });
