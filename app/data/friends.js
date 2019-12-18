@@ -1,5 +1,5 @@
 // Pre-made friend objects used in app
-const friends = [{
+const friendsArray = [{
         "name": "Rachel",
         "photo": "https://pmctvline2.files.wordpress.com/2019/06/friends-rachel.jpg?w=620",
         "scores": [
@@ -96,3 +96,5 @@ const friends = [{
         ]
     },
 ]
+
+module.exports = friendsArray
