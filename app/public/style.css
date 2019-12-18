@@ -5,15 +5,19 @@ body {
 
 .jumbotron {
     
-    background-color: black;
+    background-color: midnightblue;
+    font-family: 'Caveat', serif;   
 }
 
 .hhh {
-    color: white;
+    color:White;
+    /* color: #120f0f; */
+    font-size: 3.7em;  
 }
 
 .lead{
-    color: red
+    color: red;
+    font-size: 1.4em
 }
 
 .fa-spinner {
@@ -21,5 +25,11 @@ body {
 }
 
 #sec-text {
-    color: yellow
+    color: yellow;
+    font-size: 1.3em;
 }
+#survey-button{
+    font-size: 1.7em
+}
+
+
