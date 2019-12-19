@@ -352,59 +352,68 @@
 
     <!-- JAVA SCRIPT FOR FORM LOGIC THAT WILL BE MOVED LATER -->
     <script type="text/javascript">
-        $(document).ready(function () {
-                $("#find-friend").click(function () {
-                        event.preventDefault();
-                        profileGenerator();
-                        console.log(profileGenerator())
-                
-                    }
-                );
+        $("#find-friend").click(function () {
+            event.preventDefault();
 
+            //get values from form
+            //name 
+            profileName = $("#name-input").val().trim();
+            //photo
+            profilePhoto = $("#photo-url").val().trim();
+            //scores and array 
+            scoresArray = [];
+            //get values of radio buttons
+            q1 = parseInt($("input[name='question1']:checked").val());
+            q2 = parseInt($("input[name='question2']:checked").val());
+            q3 = parseInt($("input[name='question3']:checked").val());
+            q4 = parseInt($("input[name='question4']:checked").val());
+            q5 = parseInt($("input[name='question5']:checked").val());
+            q6 = parseInt($("input[name='question6']:checked").val());
+            q7 = parseInt($("input[name='question7']:checked").val());
+            q8 = parseInt($("input[name='question8']:checked").val());
+            q8 = parseInt($("input[name='question8']:checked").val());
+            q9 = parseInt($("input[name='question9']:checked").val());
+            q10 = parseInt($("input[name='question10']:checked").val());
+            //push to array
+            scoresArray.push(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10);
 
-                    function profileGenerator() {
-                        //get values from form
-                        //name 
-                        profileName = $("#name-input").val().trim();
-                        //photo
-                        profilePhoto = $("#photo-url").val().trim();
-                        //scores and array 
-                        scoresArray = [];
-                    
-                        q1 = parseInt($("input[name='question1']:checked").val());
-                        q2 = parseInt($("input[name='question2']:checked").val());  
-                        q3 = parseInt($("input[name='question3']:checked").val());
-                        q4 = parseInt($("input[name='question4']:checked").val());
-                        q5 = parseInt($("input[name='question5']:checked").val());
-                        q6 = parseInt($("input[name='question6']:checked").val());
-                        q7 = parseInt($("input[name='question7']:checked").val());
-                        q8 = parseInt($("input[name='question8']:checked").val());     
-                        q8 = parseInt($("input[name='question8']:checked").val());     
-                        q9 = parseInt($("input[name='question9']:checked").val());
-                        q10 = parseInt($("input[name='question10']:checked").val());
-                        //push to array
-                        scoresArray.push(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10);
-                        // console.log(profileName);
-                        // console.log(profilePhoto);
-                        // console.log(scoresArray)
-                        let profileData = {
-                            name: profileName,
-                            photo: profilePhoto,
-                            scores: scoresArray,
-                        };
-                        return profileData;
-                        // console.log(profileData);
+            //Define data object 
+            let profileData = {
+                name: profileName,
+                photo: profilePhoto,
+                scores: scoresArray
 
-                    }
+            }
+            console.log(profileData)
+            //// validation of the form
 
-                
+           
+
+            if(profilePhoto === "" || profileName === ""){
+                alert("Please fill out the form completley with your Full Name and a Photo URL")
+            }else{
+                r
             }
 
+           
+
+            // const currentURL = window.location.origin;
+            // $.post(currentURL + "/api/friends", profileData, function (data) {
+            //         //looking to see if data was posted by user
+            //         if (data == true) {
+            //             alert("Looking for friends");
+            //         }
+            //         //if not data posted...
+            //         if (data == false) {
+            //             alert("sorry someting went wrong")
+            //         }
+
+            //     }
+
+            // )
 
 
-
-
-        );
+        });
     </script>
 </body>
 
