@@ -356,24 +356,20 @@
             event.preventDefault();
 
             //get values from form:
-            //name 
-            profileName = $("#name-input").val().trim();
-            //photo
-            profilePhoto = $("#photo-url").val().trim();
-            //scores from radio button in an array 
+            const profileName = $("#name-input").val().trim();
+            const profilePhoto = $("#photo-url").val().trim();
+            //Gather scores from radio button in an array 
             scoresArray = [];
-            //get values of radio buttons
             const q1 = parseInt($("input[name='question1']:checked").val());
-            q2 = parseInt($("input[name='question2']:checked").val());
-            q3 = parseInt($("input[name='question3']:checked").val());
-            q4 = parseInt($("input[name='question4']:checked").val());
-            q5 = parseInt($("input[name='question5']:checked").val());
-            q6 = parseInt($("input[name='question6']:checked").val());
-            q7 = parseInt($("input[name='question7']:checked").val());
-            q8 = parseInt($("input[name='question8']:checked").val());
-            q8 = parseInt($("input[name='question8']:checked").val());
-            q9 = parseInt($("input[name='question9']:checked").val());
-            q10 = parseInt($("input[name='question10']:checked").val());
+            const q2 = parseInt($("input[name='question2']:checked").val());
+            const q3 = parseInt($("input[name='question3']:checked").val());
+            const q4 = parseInt($("input[name='question4']:checked").val());
+            const q5 = parseInt($("input[name='question5']:checked").val());
+            const q6 = parseInt($("input[name='question6']:checked").val());
+            const q7 = parseInt($("input[name='question7']:checked").val());
+            const q8 = parseInt($("input[name='question8']:checked").val());
+            const q9 = parseInt($("input[name='question9']:checked").val());
+            const q10 = parseInt($("input[name='question10']:checked").val());
 
             //push to array
             scoresArray.push(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10);
@@ -387,7 +383,7 @@
             }
             //// validation of the form
             //truthy value to determine if the form is complete
-            formComplete = true;
+            let formComplete = true;
             
             //validates photo field by searching string for accepted photo file types
             function photoValidation() {
@@ -413,7 +409,7 @@
                 formComplete = true;
 
             }
-            
+
             // validates radio buttons and if all were answered
             function scoreValidator() {
                 for (i = 0; i < scoresArray.length; i++) {
