@@ -33,7 +33,11 @@ module.exports = function (app) {
 
         // walking backwards down the array to exclude the most recent posted 
         for (i=friendsData.length-2; i >=0 ; i--){
-         console.log( friendsData[i].name + friendsData[i].scores)
+         console.log(friendsData[i].name + friendsData[i].scores + "   " + numberArray) //shows name/score of compared friend
+        
+
+
+          
         }
        
 
