@@ -22,6 +22,7 @@ module.exports = function (app) {
       if (postedData) {
         //new array of posted scores truned from strings into numbers
         let numberArray = []; 
+        let sc
         //Creates new Array of numbers from posted user data
         for (let i = 0; i < postedData.scores.length; i++) {
           let userNum = parseInt(postedData.scores[i])
@@ -34,17 +35,17 @@ module.exports = function (app) {
         // walking backwards down the array to exclude the most recent posted 
         for (let i=friendsData.length-2; i >=0 ; i--){
         //  console.log(friendsData[i].name + friendsData[i].scores + "   " + numberArray) //shows name/score of compared friend
-            for(n=0;n<friendsData[i].scores[n]; n++ ){
-              console.log(friendsData[i].name +
-                          friendsData[i].scores+
-                          friendsData[i].scores[n])
+            for(n=0;n<friendsData[i].scores.length; n++ ){
+              let indexComparisonAV = Math.abs( numberArray[n] - friendsData[i].scores[n]);
+              console.log(friendsData[i].name + ` position of${n} in the array `  + 
+                          ' with a value of '+ friendsData[i].scores[n]+
+                          " compared to " + numberArray[n] + " = " + indexComparisonAV)
 
-            }
-
-
-          
+            } 
+            
         }
        
+
 
         
 
