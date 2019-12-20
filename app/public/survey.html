@@ -355,15 +355,15 @@
         $("#find-friend").click(function () {
             event.preventDefault();
 
-            //get values from form
+            //get values from form:
             //name 
             profileName = $("#name-input").val().trim();
             //photo
             profilePhoto = $("#photo-url").val().trim();
-            //scores and array 
+            //scores from radio button in an array 
             scoresArray = [];
             //get values of radio buttons
-            q1 = parseInt($("input[name='question1']:checked").val());
+            const q1 = parseInt($("input[name='question1']:checked").val());
             q2 = parseInt($("input[name='question2']:checked").val());
             q3 = parseInt($("input[name='question3']:checked").val());
             q4 = parseInt($("input[name='question4']:checked").val());
@@ -374,6 +374,7 @@
             q8 = parseInt($("input[name='question8']:checked").val());
             q9 = parseInt($("input[name='question9']:checked").val());
             q10 = parseInt($("input[name='question10']:checked").val());
+
             //push to array
             scoresArray.push(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10);
 
@@ -384,18 +385,55 @@
                 scores: scoresArray
 
             }
-            console.log(profileData)
             //// validation of the form
+            //truthy value to determine if the form is complete
+            formComplete = true;
+            
+            //validates photo field by searching string for accepted photo file types
+            function photoValidation() {
+                if (profileData.photo.includes(".jpeg") || profileData.photo.includes(".jpg") || profileData
+                    .photo.includes(".png") || profileData.photo.includes(".gif")) {
+                    return formComplete = true;
 
-           
-
-            if(profilePhoto === "" || profileName === ""){
-                alert("Please fill out the form completley with your Full Name and a Photo URL")
-            }else{
-                r
+                } else {
+                    alert(
+                        'Please use a valid image URL with one of the following formats: .jpeg, .jpg, .png, .gif'
+                        )
+                    return formComplete = false;
+                }
             }
+            photoValidation();
 
-           
+            // validates name and photo field
+            if (profileName === "" || photoValidation() == false) {
+                alert("Please fill out the form completley with your Name and a Photo URL")
+                formComplete = false
+
+            } else {
+                formComplete = true;
+
+            }
+            
+            // validates radio buttons and if all were answered
+            function scoreValidator() {
+                for (i = 0; i < scoresArray.length; i++) {
+                    // console.log(scoresArray[i])
+                    if (isNaN(scoresArray[i])) {
+                        console.log(scoresArray[i])
+                        alert("Please answer all the click box questions to find a friend")
+                        return formComplete = false
+                    }
+                    
+                };
+                
+            };
+            // runs above function
+            scoreValidator();
+            console.log(formComplete);
+            console.log(profileData)
+
+
+
 
             // const currentURL = window.location.origin;
             // $.post(currentURL + "/api/friends", profileData, function (data) {
