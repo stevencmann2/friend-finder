@@ -11,23 +11,38 @@ module.exports = function (app) {
 
 
   app.post("/api/friends", function (req, res) {
-    friendsData.push(req.body);
-    res.json(true);
+      friendsData.push(req.body);
+      res.json(true);
 
-    /// req.body refers to the parsed object
-    console.log(req.body)
-    /////////inital code for response posted comparison//////
-    let postedData = req.body
-    if (postedData){
-      console.log(postedData.scores)
+      
+      /////////inital code for response posted comparison//////
+      let postedData = req.body;
+
+      // console.log(friendsData.length)
+      if (postedData) {
+        //new array of posted scores truned from strings into numbers
+        let numberArray = []; 
+        //Creates new Array of numbers from posted user data
+        for (i = 0; i < postedData.scores.length; i++) {
+          let userNum = parseInt(postedData.scores[i])
+          numberArray.push(userNum)
+        };
+
+        // console.log(numberArray)
+        // console.log(friendsData.length -2 )
+
+        // walking backwards down the array to exclude the most recent posted 
+        for (i=friendsData.length-2; i >=0 ; i--){
+         console.log( friendsData[i].name + friendsData[i].scores)
+        }
+       
+
+        
+
+
+      }
+
     }
-    
-});
 
-}
-
-
-
-
-
-
+  )
+};
