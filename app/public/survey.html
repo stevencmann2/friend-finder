@@ -391,8 +391,8 @@
             
             //validates photo field by searching string for accepted photo file types
             function photoValidation() {
-                if (profileData.photo.includes(".jpeg") || profileData.photo.includes(".jpg") || profileData
-                    .photo.includes(".png") || profileData.photo.includes(".gif")) {
+                if (profileData.photo.toLowerCase().includes("jpeg") || profileData.photo.toLowerCase().includes("jpg") || profileData
+                    .photo.toLowerCase().includes("png") || profileData.photo.toLowerCase().includes("gif")) {
                     return formComplete = true;
 
                 } else {
