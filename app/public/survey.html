@@ -384,31 +384,28 @@
             //// validation of the form
             //truthy value to determine if the form is complete
             let formComplete = true;
-            
+
             //validates photo field by searching string for accepted photo file types
             function photoValidation() {
-                if (profileData.photo.toLowerCase().includes("jpeg") || profileData.photo.toLowerCase().includes("jpg") || profileData
+                if (profileData.photo.toLowerCase().includes("jpeg") || profileData.photo.toLowerCase()
+                    .includes("jpg") || profileData
                     .photo.toLowerCase().includes("png") || profileData.photo.toLowerCase().includes("gif")) {
                     return formComplete = true;
 
                 } else {
                     alert(
                         'Please use a valid image URL with one of the following formats: .jpeg, .jpg, .png, .gif'
-                        )
+                    )
                     return formComplete = false;
                 }
             }
-            photoValidation();
-
-            // validates name and photo field
-            if (profileName === "" || photoValidation() == false) {
-                alert("Please fill out the form completley with your Name and a Photo URL")
-                formComplete = false
-
-            } else {
-                formComplete = true;
-
-            }
+            //validates name
+            function nameValidator() {
+                if (profileName === "") {
+                    alert("Please fill out the form completley with your Name and a Photo URL")
+                    return formComplete = false
+                }
+            };
 
             // validates radio buttons and if all were answered
             function scoreValidator() {
@@ -419,32 +416,47 @@
                         alert("Please answer all the click box questions to find a friend")
                         return formComplete = false
                     }
-                    
+
                 };
-                
+
             };
-            // runs above function
+
+
+            ///////// CONSOLE THE DATA OBJECT
+            console.log(profileData)
+            console.log(formComplete)
+
+            function friendFinder() {
+                ///// run the post method upon form completion
+                if (formComplete == false) {
+                    console.log(formComplete)
+                } else {
+                    console.log(formComplete)
+
+                    const currentURL = window.location.origin;
+                    $.post(currentURL + "/api/friends", profileData, function (data) {
+                            //looking to see if data was posted by user
+                            if (data) {
+                                alert("Looking for friends.....");
+                            }
+
+                        }
+
+                    )
+                }
+
+
+            };
+
+            /// RUN THE API POST  
+            // RUN THE FUNCTOINS TO VALIDATE THE FORM
+            console.log(formComplete)
+            nameValidator();
+            photoValidation();
             scoreValidator();
-            console.log(formComplete);
+            friendFinder()
             console.log(profileData)
 
-
-
-
-            // const currentURL = window.location.origin;
-            // $.post(currentURL + "/api/friends", profileData, function (data) {
-            //         //looking to see if data was posted by user
-            //         if (data == true) {
-            //             alert("Looking for friends");
-            //         }
-            //         //if not data posted...
-            //         if (data == false) {
-            //             alert("sorry someting went wrong")
-            //         }
-
-            //     }
-
-            // )
 
 
         });
