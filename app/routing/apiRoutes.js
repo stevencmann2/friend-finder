@@ -1,10 +1,3 @@
-//return the match via res.json(matched object)
-// determine way to sort , if not matched
-// clean logic 
-
-
-
-
 // Setting API routes for user
 
 
@@ -20,7 +13,6 @@ module.exports = function (app) {
   app.post("/api/friends", function (req, res) {
       friendsData.push(req.body);
 
-
       /////////inital code for response posted comparison//////
       let postedData = req.body;
       /////////MATCHED VARIBALE TO RETURN AS AN OBJECT
@@ -29,8 +21,6 @@ module.exports = function (app) {
 
       // console.log(friendsData.length)
       if (postedData) {
-        //////// AV value to be determined 
-        // let totalDifference; 
         //new array of posted scores--- type: num
         let numberArray = [];
        //used only if no exact match 
@@ -62,16 +52,14 @@ module.exports = function (app) {
           //totals avArray 
           let totalDifference = sumArray(avArray);
 
-
-
-           
           ////// IF THERE IS A MATCH BREAK THE LOOOOOP AND RETURN THE OBJECT 
           if (totalDifference === 0) {
 
             ////// reanmed a variable to export in res.json
             friendMatch = friendsData[i];
+      
+            ////////////// IF NO MATCH PUSH AV VALUES TO  ARRAY FOR SORTING : Create object to link value to data
 
-            ////////////// IF NO MATCH PUSH AV VALUES TO  ARRAY FOR SORTING  
           } else {
             sortArray.push({
               friend: friendsData[i],
@@ -81,26 +69,28 @@ module.exports = function (app) {
           }
 
         }
-        console.log(sortArray)
-        // return sortArray;
-
+        
+        //////SORT BASED ON VALUE
         sortArray.sort(function (a, b) {
           return a.difference - b.difference
         });
 
+        //Checking if sortArray is empty 
         console.log(sortArray)
-       
-        ////////WITH EXACT MATCH THIS IS WORKING/////////
-        // console.log(friendMatch)
-        res.json(friendMatch)
-
-         // if (sortArray[0] == totalDifference) {
-        // }
-
+        if (!friendMatch){
+          console.log(`RETURNING ${sortArray[0].friend.name}`)
+          console.log(`RETURNING ${sortArray[0].friend.photo}`)
+          console.log(`RETURNING ${sortArray[0].friend}`)
+          return res.json(sortArray[0].friend)
+        }
+  
+        ////////RETURN CONDITION FOR EXACT MATCH//////
+        console.log(`RETURNING ${friendMatch.name}`)
+        console.log(`RETURNING ${friendMatch.photo}`)
+        console.log(`RETURNING ${friendMatch}`)
+        res.json(friendMatch)    
       }
-
     }
-
   )
 };
 
