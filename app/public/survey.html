@@ -389,9 +389,11 @@
     <script type="text/javascript">
         $("#find-friend").click(function () {
             event.preventDefault();
+            
             //get values from form:
             const profileName = $("#name-input").val().trim();
             const profilePhoto = $("#photo-url").val().trim();
+
             //Gather scores from radio button in an array 
             scoresArray = [];
             const q1 = parseInt($("input[name='question1']:checked").val());
@@ -404,57 +406,55 @@
             const q8 = parseInt($("input[name='question8']:checked").val());
             const q9 = parseInt($("input[name='question9']:checked").val());
             const q10 = parseInt($("input[name='question10']:checked").val());
-            //push to array
+           
             scoresArray.push(q1, q2, q3, q4, q5, q6, q7, q8, q9, q10);
-            //Define data object 
+
+            // Structures  data objectto be gathered
             let profileData = {
                 name: profileName,
                 photo: profilePhoto,
                 scores: scoresArray
             }
-            //// validation of the form
-            //truthy value to determine if the form is complete
-            let formComplete = true;
-            //validates photo field by searching string for accepted photo file types
+           ///// Photo Validation searches URL for specific image types
             function photoValidation() {
                 if (profileData.photo.toLowerCase().includes("jpeg") || profileData.photo.toLowerCase()
                     .includes("jpg") || profileData
                     .photo.toLowerCase().includes("png") || profileData.photo.toLowerCase().includes("gif")) {
-                    return formComplete = true;
+                    
+                    return true;
                 } else {
                     alert(
                         'Please use a valid image URL with one of the following formats: .jpeg, .jpg, .png, .gif'
                     )
-                    return formComplete = false;
+                   
+                    return false;
                 }
             }
-            //validates name
+            //validates name checks for blank value
             function nameValidator() {
                 if (profileName === "") {
                     alert("Please fill out the form completley with your Name and a Photo URL")
-                    return formComplete = false
+                    
                 }
+                return true;
             };
-            // validates radio buttons and if all were answered
+            // validates radio buttons --- if all were answered
             function scoreValidator() {
                 for (let i = 0; i < scoresArray.length; i++) {
-                    // console.log(scoresArray[i])
+                    
                     if (isNaN(scoresArray[i])) {
-                        console.log(scoresArray[i])
                         alert("Please answer all the click box questions to find a friend")
-                        return formComplete = false
+            
+                        return false;
                     }
+                    
                 };
+                return true;
             };
-            ///////// CONSOLE THE DATA OBJECT
-            console.log(profileData)
-            console.log(formComplete)
+            
+            //////// POST METHOD 
             function friendFinder() {
-                ///// run the post method upon form completion
-                if (formComplete == false) {
-                    console.log(formComplete)
-                } else {
-                    console.log(formComplete)
+                    
                     const currentURL = window.location.origin;
                     $.post(currentURL + "/api/friends", profileData, function (data) {
                             //looking to see if data was posted by user
@@ -463,16 +463,19 @@
                             }
                         }
                     )
-                }
+                
             };
-            /// RUN THE API POST  
-            // RUN THE FUNCTOINS TO VALIDATE THE FORM
-            console.log(formComplete)
-            nameValidator();
-            photoValidation();
-            scoreValidator();
-            friendFinder()
+            
+            ////// RUN FRONT END FORM VALIDATE 
+           
+            const nameComplete =  nameValidator();
+            const photoComplete = photoValidation();
+            const scoreComplete = scoreValidator();
             console.log(profileData)
+            if (nameComplete && photoComplete && scoreComplete == true){
+                console.log('validation complete')
+                friendFinder()
+            }
         });
     </script>
 </body>
