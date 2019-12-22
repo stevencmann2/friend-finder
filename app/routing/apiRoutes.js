@@ -18,9 +18,8 @@ module.exports = function (app) {
       /////////MATCHED VARIBALE TO RETURN AS AN OBJECT
       let friendMatch;
 
-
-      // console.log(friendsData.length)
       if (postedData) {
+
         //new array of posted scores--- type: num
         let numberArray = [];
        //used only if no exact match 
@@ -43,6 +42,7 @@ module.exports = function (app) {
         // walking backwards down the array to exclude the most recent posted 
         for (let i = friendsData.length - 2; i >= 0; i--) {
           //////// absolute value array 
+          
           let avArray = [];
           for (n = 0; n < friendsData[i].scores.length; n++) {
             let indexComparisonAV = Math.abs(numberArray[n] - friendsData[i].scores[n]);

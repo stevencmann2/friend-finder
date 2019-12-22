@@ -336,17 +336,19 @@
             <div class="modal-content">
                 <div class="modal-header">
 
-                    <h5 class="modal-title"><strong>Friend Matched!</strong></h5>
+                    <h5 class="modal-title"><strong>You've Got a Friend!</strong></h5>
                     <button type="button" class="close" data-dismiss="modal">
                         &times;
                     </button>
                 </div>
 
                 <div class="modal-body">
-                    <h6 id="friendName"> </h6>
+                    
+                    <h5 id="friendName" class="mb-2"> </h5>
+
                     <img class="img-fluid" id="matchingPhoto"
                         src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_324,h_216/https://www.boylanbottling.com/wp-content/uploads/2012/09/lemons-324x216.jpg"
-                        alt="A picture of lemons, when life gives you lemons...." />
+                        alt="A Friendly Photo" />
 
                 </div>
                 <div class="modal-footer">
@@ -363,14 +365,7 @@
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script> -->
+   
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -415,7 +410,7 @@
                 if (profileData.photo.toLowerCase().includes("jpeg") || profileData.photo.toLowerCase()
                     .includes("jpg") || profileData
                     .photo.toLowerCase().includes("png") || profileData.photo.toLowerCase().includes("gif")) {
-                        if(profileData.photo.includes("www") || profileData.photo.includes("https") || profileData.photo.includes("image")){
+                        if(profileData.photo.includes("www") || profileData.photo.includes("https")){
                             return true;
                         }else{
                             alert(
