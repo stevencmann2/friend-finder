@@ -25,7 +25,7 @@
         <hr>
 
         <!-- Name & Photo Input-->
-        <form class="profile-information needs-validation">
+        <form id="profileForm">
             <div class="form-group font-weight-bold">
                 <label for="name">Name (Required): </label>
                 <input type="name" class="form-control" id="name-input">
@@ -344,8 +344,7 @@
 
                 <div class="modal-body">
                     <h6 id="friendName"> </h6>
-                    <img class="img-fluid"
-                        id="matchingPhoto"
+                    <img class="img-fluid" id="matchingPhoto"
                         src="https://cdn.shortpixel.ai/client/q_glossy,ret_img,w_324,h_216/https://www.boylanbottling.com/wp-content/uploads/2012/09/lemons-324x216.jpg"
                         alt="A picture of lemons, when life gives you lemons...." />
 
@@ -379,13 +378,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
-    
+
     <!-- JAVA SCRIPT FOR FORM LOGIC THAT WILL BE MOVED LATER -->
     <script type="text/javascript">
-    
         $("#find-friend").click(function () {
             event.preventDefault();
-            
+
 
             //get values from form:
             const profileName = $("#name-input").val().trim();
@@ -461,7 +459,8 @@
                         $("#matchingPhoto").attr("src", data.photo);
                         $("#myModal").modal('show');
 
-                    }else{
+
+                    } else {
                         alert("Hmm... Somethings not quite right, please check back later")
                     }
 
@@ -470,7 +469,17 @@
 
             };
 
-            ////// RUN FRONT END FORM VALIDATE 
+            /// form clear function 
+            function formClear() {
+                $("#name-input").val("");
+                $("#photo-url").val("")
+                // $('input').prop('checked', false);
+                $("input:radio").prop("checked", false);
+                // $('#profileForm input[type="radio":checked]').prop('checked', false)
+            }
+
+
+            ////// RUN FRONT END FORM VALIDATE & FORM CLEAR
 
             const nameComplete = nameValidator();
             const photoComplete = photoValidation();
@@ -479,11 +488,11 @@
             if (nameComplete && photoComplete && scoreComplete) {
                 // console.log('validation complete')
                 friendFinder()
+                formClear()
+
+
             }
         });
-
-
-       
     </script>
 </body>
 
