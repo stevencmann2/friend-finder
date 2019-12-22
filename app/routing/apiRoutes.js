@@ -76,12 +76,13 @@ module.exports = function (app) {
         });
 
         //Checking if sortArray is empty 
-        console.log(sortArray)
+        
         if (!friendMatch){
           console.log(`RETURNING ${sortArray[0].friend.name}`)
           console.log(`RETURNING ${sortArray[0].friend.photo}`)
           console.log(`RETURNING ${sortArray[0].friend}`)
-          return res.json(sortArray[0].friend)
+          friendMatch = sortArray[0].friend
+          return res.json(friendMatch)
         }
   
         ////////RETURN CONDITION FOR EXACT MATCH//////
