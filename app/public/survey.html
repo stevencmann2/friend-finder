@@ -415,12 +415,19 @@
                 if (profileData.photo.toLowerCase().includes("jpeg") || profileData.photo.toLowerCase()
                     .includes("jpg") || profileData
                     .photo.toLowerCase().includes("png") || profileData.photo.toLowerCase().includes("gif")) {
-
-                    return true;
+                        if(profileData.photo.includes("www") || profileData.photo.includes("https") || profileData.photo.includes("image")){
+                            return true;
+                        }else{
+                            alert(
+                        'Please verify your Photo URL is a URL '
+                    );
+                    return false;
+                        }
+                       
                 } else {
                     alert(
-                        'Please use a valid image URL with one of the following formats: .jpeg, .jpg, .png, .gif'
-                    )
+                        'Please use one of the following valid image formats: .jpeg, .jpg, .png, .gif'
+                    );
 
                     return false;
                 }
@@ -428,7 +435,7 @@
             //validates name checks for blank value
             function nameValidator() {
                 if (profileName === "") {
-                    alert("Please fill out the form completley with your Name and a Photo URL")
+                    alert("Please include your name before continuing");
                     return false;
                 }
                 return true;
@@ -438,7 +445,7 @@
                 for (let i = 0; i < scoresArray.length; i++) {
 
                     if (isNaN(scoresArray[i])) {
-                        alert("Please answer all the click box questions to find a friend")
+                        alert("Please answer all the click box questions to find a friend");
 
                         return false;
                     }
@@ -461,7 +468,7 @@
 
 
                     } else {
-                        alert("Hmm... Somethings not quite right, please check back later")
+                        alert("Hmm... Somethings not quite right, please check back later");
                     }
 
 
@@ -472,10 +479,9 @@
             /// form clear function 
             function formClear() {
                 $("#name-input").val("");
-                $("#photo-url").val("")
-                // $('input').prop('checked', false);
+                $("#photo-url").val("");
                 $("input:radio").prop("checked", false);
-                // $('#profileForm input[type="radio":checked]').prop('checked', false)
+                
             }
 
 
@@ -487,10 +493,8 @@
             console.log(profileData)
             if (nameComplete && photoComplete && scoreComplete) {
                 // console.log('validation complete')
-                friendFinder()
-                formClear()
-
-
+                friendFinder();
+                formClear();
             }
         });
     </script>
