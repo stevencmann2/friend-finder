@@ -7,6 +7,9 @@
 * HTMl
 * CSS (Bootstrap)
 
+## Visual Guide
+![A gif of the app](./app/public/Friend-Gif.gif)
+
 ## Deployed Heroku App
 
 https://aqueous-mountain-71410.herokuapp.com/
