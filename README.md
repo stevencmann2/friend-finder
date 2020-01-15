@@ -7,6 +7,9 @@
 * HTMl
 * CSS (Bootstrap)
 
+## Organization
+The app is organized into an app folder which contains the directories for the working application. The app folder contains the files for genreating the HTML, CSS and the survey. I am using a custom generated API to match friends. 
+
 ## Visual Guide
 ![A gif of the app](./app/public/Friend-Gif.gif)
 
